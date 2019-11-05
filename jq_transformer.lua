@@ -28,6 +28,8 @@ function _M.transform_jq_body(transform, buffered_data)
       else
         return buffered_data
       end
+    else
+      return buffered_data
     end
   end
 end

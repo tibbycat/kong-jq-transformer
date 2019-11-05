@@ -42,10 +42,14 @@ function TransformerHandlerJq:body_filter(conf)
   if jq_filter.is_response_transform_set(conf) and jq_filter.is_json_body(ngx.header["content-type"]) then
     local ctx = ngx.ctx
     local chunk, eof = ngx.arg[1], ngx.arg[2]
-    if eof then
+    if eof and not ctx.rt_body_chunks == nil then
       local body = jq_filter.transform_jq_body(conf.response, table_concat(ctx.rt_body_chunks))
       ngx.arg[1] = body
     else
+      if ctx.rt_body_chunks == nil then
+        ctx.rt_body_chunks = {}
+        ctx.rt_body_chunk_number = 1
+      end
       ctx.rt_body_chunks[ctx.rt_body_chunk_number] = chunk
       ctx.rt_body_chunk_number = ctx.rt_body_chunk_number + 1
       ngx.arg[1] = nil
