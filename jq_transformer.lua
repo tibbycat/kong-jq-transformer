@@ -12,10 +12,12 @@ function _M.is_json_body(content_type)
 end
 
 function _M.is_request_transform_set(conf)
+  if conf.request == nil then return false end
   return #conf.request > 0 
 end
 
 function _M.is_response_transform_set(conf)
+  if conf.response == nil then return false end
   return #conf.response > 0 
 end
 
