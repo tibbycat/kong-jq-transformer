@@ -40,16 +40,18 @@ end
 function TransformerHandlerJq:body_filter(conf)
   TransformerHandlerJq.super.body_filter(self)
 
-  if jq_filter.is_response_transform_set(conf) and jq_filter.is_json_body(ngx.header["content-type"]) then
-    local ctx = ngx.ctx
-    local chunk, eof = ngx.arg[1], ngx.arg[2]
-    if eof and ctx.rt_body_chunks then
-      local body = jq_filter.transform_jq_body(conf.response, table_concat(ctx.rt_body_chunks))
-      ngx.arg[1] = body
-    else
-      ctx.rt_body_chunks[ctx.rt_body_chunk_number] = chunk
-      ctx.rt_body_chunk_number = ctx.rt_body_chunk_number + 1
-      ngx.arg[1] = nil
+  if ngx.status == ngx.HTTP_OK then
+    if jq_filter.is_response_transform_set(conf) and jq_filter.is_json_body(ngx.header["content-type"]) then
+      local ctx = ngx.ctx
+      local chunk, eof = ngx.arg[1], ngx.arg[2]
+      if eof and ctx.rt_body_chunks then
+        local body = jq_filter.transform_jq_body(conf.response, table_concat(ctx.rt_body_chunks))
+        ngx.arg[1] = body
+      else
+        ctx.rt_body_chunks[ctx.rt_body_chunk_number] = chunk
+        ctx.rt_body_chunk_number = ctx.rt_body_chunk_number + 1
+        ngx.arg[1] = nil
+      end
     end
   end
 end
