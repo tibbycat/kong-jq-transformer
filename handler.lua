@@ -20,9 +20,10 @@ function TransformerHandlerJq:access(conf)
     ngx.req.read_body()
     local body = ngx.req.get_body_data()
     body = jq_filter.transform_jq_body(conf.request, body)
-    ngx.req.set_body_data(body)
-    ngx.req.set_header("content-length", #body)
-
+    if body then
+      ngx.req.set_body_data(body)
+      ngx.req.set_header("content-length", #body)
+    end
   end
 
 end
