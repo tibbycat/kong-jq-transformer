@@ -19,8 +19,7 @@ function TransformerHandlerJq:access(conf)
   if jq_filter.is_request_transform_set(conf) and jq_filter.is_json_body(content_type) then
     ngx.req.read_body()
     local body = ngx.req.get_body_data()
-    body = jq_filter.transform_jq_body(conf.request, body)
-    if not body then
+    if not body or body == "" then
       local body_file = ngx.req.get_body_file()
       if body_file then
         body_file_handle:seek("set")
