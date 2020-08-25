@@ -6,7 +6,7 @@ source = {
   tag = "1.0-1"
 }
 description = {
-  summary = "./jq transformer plugin for kong"
+  summary = "./jq transformer plugin for kong",
   license = "Apache 2.0",
   homepage = "https://github.com/tibbycat/kong-jq-transformer",
 }
