@@ -11,7 +11,8 @@ description = {
   homepage = "https://github.com/tibbycat/kong-jq-transformer",
 }
 dependencies = {
-  "lua ~> 5.1"
+  "lua ~> 5.1",
+  "lua-jq = 1.0-1"
 }
 build = {
   type = "builtin",
