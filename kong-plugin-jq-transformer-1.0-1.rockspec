@@ -15,10 +15,5 @@ dependencies = {
   "lua-jq = 1.0-1"
 }
 build = {
-  type = "builtin",
-  modules = {
-    ["kong.plugins.jq-transformer.handler"] = "handler.lua",
-    ["kong.plugins.jq-transformer.schema"] = "schema.lua",
-    ["kong.plugins.jq-transformer.jq-transformer"] = "jq-transformer.lua"
-  }
+  type = "make"
 }
