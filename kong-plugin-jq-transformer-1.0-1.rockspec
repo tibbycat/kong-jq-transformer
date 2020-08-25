@@ -3,7 +3,7 @@ version = "1.0-1"
 supported_platforms = {"linux", "macosx"}
 source = {
   url = "git://github.com/tibbycat/kong-jq-transformer",
-  tag = "v1.0-1"
+  tag = "1.0-1"
 }
 description = {
   summary = "./jq transformer plugin for kong"
