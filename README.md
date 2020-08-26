@@ -56,5 +56,5 @@ Content-Type:application/vnd.kafka.json.v2+json
 ### Filter or rename fields. (If you have low bandwidth [eg. mobile] , or sensitive data)
 jq-transformer response
 ```
-{fieldA: .field1, fieldB, .field2 }
+{fieldA: .field1, fieldB: .field2 }
 ```
