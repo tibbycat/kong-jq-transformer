@@ -20,16 +20,22 @@ function TransformerHandlerJq:access(conf)
     ngx.req.read_body()
     local body = ngx.req.get_body_data()
     if not body or body == "" then
-      local body_file = ngx.req.get_body_file()
-      if body_file then
-        body_file_handle:seek("set")
-        body = body_file_handle:read("*a")
-        body_file_handle:close()
+      local filename = ngx.req.get_body_file()
+      if filename then
+	local filehandle=io.open (filename, "r")
+	if filehandle then
+          filehandle:seek("set")
+          body = filehandle:read("*a")
+          filehandle:close()
+	end
       end
     end
-    body = jq_filter.transform_jq_body(conf.request, body)
 
-    ngx.req.set_body_data(body)
+    if(#body>0) then
+      body = jq_filter.transform_jq_body(conf.request, body)
+      ngx.req.set_body_data(body)
+    end
+
     ngx.req.set_header("content-length", #body)
 
   end

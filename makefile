@@ -5,4 +5,3 @@ KONG_PLUGINS_DIR=$(LUA_SHAREDIR)/kong/plugins
 install:
 	cp -r kong/plugins/jq-transformer $(KONG_PLUGINS_DIR)
 
-
