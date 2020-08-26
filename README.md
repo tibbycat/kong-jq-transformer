@@ -22,6 +22,18 @@ Install jq-transformer
 4. Add jq-transformer to /etc/kong/kong.conf custom_plugins
 5. restart kong
 ```
+### Adding plugin config
+/etc/kong/kong.conf
+```
+# 0.12-CE, 0.14-CE
+custom_plugins = jq-transformer
+
+```
+```
+# 1.5-EE
+plugins = bundled,jq-transformer
+
+```
 ## Recipies
 ### Transform elasticsearch 7 /_search response total to 6 compatible
 ```
