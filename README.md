@@ -35,7 +35,8 @@ plugins = bundled,jq-transformer
 
 ```
 ## Recipies
-### Transform elasticsearch 7 /_search response total to 6 compatible
+### Transform elasticsearch 7 .../_search response total to 6 compatible
+jq-transformer response
 ```
 .hits.total.value as $v|if $v then .hits.total |= $v else . end
 ```
