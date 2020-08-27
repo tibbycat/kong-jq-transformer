@@ -1,7 +1,7 @@
 # kong-jq-transformer
 jq request/response transformer for kong
 ## Prerequisites
-1. Kong 0.12-CE, 0.14-CE, 1.5-EE
+1. Kong 0.12-CE, 0.14-CE, 1.5-EE, 2.1.3.0-EE
 2. Requires lua-jq which you can get from https://github.com/tibbycat/lua-jq
 2.1. lua-jq requires gcc and jq-devel (or libjq-dev)
 ## TODO
@@ -30,7 +30,7 @@ custom_plugins = jq-transformer
 
 ```
 ```
-# 1.5-EE
+# 1.5-EE, 2.1.3.0-EE
 plugins = bundled,jq-transformer
 
 ```
