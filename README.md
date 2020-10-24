@@ -3,6 +3,7 @@ jq request/response transformer for kong
 ## Prerequisites
 1. Kong 0.12-CE, 0.14-CE, 1.5-EE, 2.1-EE
 2. Requires lua-jq which you can get from https://github.com/tibbycat/lua-jq
+
 2.1. lua-jq requires gcc and jq-devel (or libjq-dev)
 ## ISSUES
 1.5-EE, 2.1-EE : There is an issue in kong that after adding the plugin and saving, the edit button is missing when you are viewing this plugin on a service or route (When there is no icon for the plugin, the edit button is not there either). You will need to navigate via the top level plugins until this is resolved by konghq.
