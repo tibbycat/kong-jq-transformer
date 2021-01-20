@@ -54,7 +54,7 @@ request-transformer append header
 ```
 Content-Type:application/vnd.kafka.json.v2+json
 ```
-### Filter or rename fields. (If you have low bandwidth [eg. mobile] , or sensitive data)
+### Filter or rename fields. (If you have low bandwidth [eg. mobile] , or sensitive data. Eg: each consumer can have a custom data filter)
 jq-transformer response
 ```
 {fieldA: .field1, fieldB: .field2 }
